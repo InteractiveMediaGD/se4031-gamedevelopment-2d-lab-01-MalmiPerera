@@ -38,13 +38,19 @@ public class PlayerHealth : MonoBehaviour
     void UpdateUI()
     {
         healthText.text = "Health: " + currentHealth;
-    }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Obstacle"))
+        // Change color based on health amount
+        if (currentHealth > 60)
         {
-            TakeDamage(10);
+            healthText.color = Color.green;
+        }
+        else if (currentHealth > 30)
+        {
+            healthText.color = Color.yellow;
+        }
+        else
+        {
+            healthText.color = Color.red; // Danger!
         }
     }
 }
